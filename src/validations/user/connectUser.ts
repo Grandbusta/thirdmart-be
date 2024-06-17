@@ -1,7 +1,7 @@
 import Joi from "joi";
 
-const createUserSchema=Joi.object({
+const connectUserSchema=Joi.object({
     wallet_address:Joi.string().required()
 })
 
-export default createUserSchema
+export default connectUserSchema

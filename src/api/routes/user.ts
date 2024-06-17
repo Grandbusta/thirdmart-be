@@ -1,11 +1,11 @@
 import { Router } from "express"
-import addUser from "../controllers/user/createUser"
+import connectUser from "../controllers/user/connectUser"
 import joiMiddleware from "../middlewares/joi_middleware"
-import createUserSchema from "../../validations/user/createUser"
+import connectUserSchema from "../../validations/user/connectUser"
 const route = Router()
 
 export default function userRouter(app: Router) {
     app.use("/user", route)
 
-    route.post("/add",joiMiddleware(createUserSchema),addUser)
+    route.post("/connect",joiMiddleware(connectUserSchema),connectUser)
 }
