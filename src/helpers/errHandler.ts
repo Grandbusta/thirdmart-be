@@ -1,16 +1,16 @@
-import { Response } from 'express'
+import { Response } from "express";
 
 const ErrorHandler = {
   validationError: (res: Response, error: Error) =>
     res.status(400).json({
-      status: 'error',
+      status: "error",
       message: error.message,
     }),
   serverResponse: (res: Response, message: string, status: number) =>
     res.status(status).json({
-      status: 'error',
+      status: "error",
       message,
     }),
-}
+};
 
-export default ErrorHandler
+export default ErrorHandler;
