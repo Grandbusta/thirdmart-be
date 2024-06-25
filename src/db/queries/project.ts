@@ -48,6 +48,19 @@ export async function getUserProjects(
     };
   } catch (error) {
     console.error(error);
-    throw Error("error in addProject query function");
+    throw Error("error in getUserProjects query function");
+  }
+}
+
+export async function getSingleProject(projectId: string) {
+  try {
+    const data = await db("projects")
+      .select("*")
+      .where("projectId", projectId)
+      .first();
+    return data;
+  } catch (error) {
+    console.error(error);
+    throw Error("error in getSingleProject query function");
   }
 }
