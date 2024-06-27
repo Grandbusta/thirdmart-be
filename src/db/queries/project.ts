@@ -3,6 +3,7 @@ import { db } from "..";
 interface Project {
   name?: string;
   title?: string;
+  description?: string;
   chainId?: string;
   logoUrl?: string;
   theme?: string;
@@ -62,5 +63,21 @@ export async function getSingleProject(projectId: string) {
   } catch (error) {
     console.error(error);
     throw Error("error in getSingleProject query function");
+  }
+}
+
+export async function updateSingleProject(
+  projectId: string,
+  projectData: Project,
+) {
+  try {
+    const data = await db("projects")
+      .where("projectId", projectId)
+      .update(projectData)
+      .returning("*");
+    return data[0];
+  } catch (error) {
+    console.error(error);
+    throw Error("error in updateSingleProject query function");
   }
 }
